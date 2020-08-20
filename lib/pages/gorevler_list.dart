@@ -1,30 +1,23 @@
 import 'package:flutter/material.dart';
+import 'package:training38_gorev_listesi_app/models/gorev_veri.dart';
 import 'package:training38_gorev_listesi_app/pages/gorevler_tile.dart';
-import 'package:training38_gorev_listesi_app/models/gorev.dart';
+import 'package:provider/provider.dart';
 
-class GorevListesi extends StatefulWidget {
-  final List<Gorev> gorevListesi;
-  GorevListesi({this.gorevListesi});
-  @override
-  _GorevListesiState createState() => _GorevListesiState();
-}
-
-class _GorevListesiState extends State<GorevListesi> {
-  @override
+class GorevListesi extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListView.builder(
       itemBuilder: (context, index) {
         return GorevTile(
-          gorevAd: widget.gorevListesi[index].gorevAd,
-          secim: widget.gorevListesi[index].yapildi,
+          gorevAd: Provider.of<GorevVeri>(context).gorevListesi[index].gorevAd,
+          secim: Provider.of<GorevVeri>(context).gorevListesi[index].yapildi,
           checkBoxCallback: (bool val) {
-            setState(() {
-              widget.gorevListesi[index].toggleYapildi();
-            });
+            // setState(() {
+            //   Provider.of<GorevVeri>(context).gorevListesi[index].toggleYapildi();
+            // });
           },
         );
       },
-      itemCount: widget.gorevListesi.length,
+      itemCount: Provider.of<GorevVeri>(context).gorevListesi.length,
     );
   }
 }

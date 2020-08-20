@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:training38_gorev_listesi_app/pages/gorevler_add.dart';
 import 'package:training38_gorev_listesi_app/pages/gorevler_list.dart';
-import 'package:training38_gorev_listesi_app/models/gorev.dart';
+import 'package:training38_gorev_listesi_app/models/gorev_veri.dart';
+import 'package:provider/provider.dart';
 
 class GorevlerEkran extends StatefulWidget {
   // Widget buildModalSheet(BuildContext context) {
@@ -17,14 +18,6 @@ class GorevlerEkran extends StatefulWidget {
 }
 
 class _GorevlerEkranState extends State<GorevlerEkran> {
-  List<Gorev> gorevListesi = [
-    Gorev(gorevAd: "Spora Git"),
-    Gorev(gorevAd: "Effortless English çalış"),
-    Gorev(gorevAd: "Mehmet Yılmaz'ı öp"),
-    Gorev(gorevAd: "Flutter Çalış"),
-    Gorev(gorevAd: "Mehmet Yılmaz'a el salla"),
-  ];
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -34,11 +27,11 @@ class _GorevlerEkranState extends State<GorevlerEkran> {
           showModalBottomSheet(
               context: context,
               builder: (context) => GorevEkle((yeniGorev) {
-                    setState(() {
-                      // print(yeniGorev);
-                      gorevListesi.add(Gorev(
-                          gorevAd: yeniGorev)); // listeye yeni görev ekleme
-                    });
+                    // setState(() {
+                    //   // print(yeniGorev);
+                    //   gorevListesi.add(Gorev(
+                    //       gorevAd: yeniGorev)); // listeye yeni görev ekleme
+                    // });
                     Navigator.pop(context);
                   }));
         },
@@ -75,7 +68,7 @@ class _GorevlerEkranState extends State<GorevlerEkran> {
                 ),
                 SizedBox(height: 10.0),
                 Text(
-                  "5 tane görev var",
+                  "${Provider.of<GorevVeri>(context).gorevListesi.length} tane görev var",
                   style: TextStyle(
                       fontSize: 20, color: Color.fromRGBO(77, 59, 59, 1)),
                 ),
@@ -91,9 +84,7 @@ class _GorevlerEkranState extends State<GorevlerEkran> {
                   borderRadius: BorderRadius.only(
                       topLeft: Radius.circular(30),
                       topRight: Radius.circular(30))),
-              child: GorevListesi(
-                gorevListesi: gorevListesi,
-              ),
+              child: GorevListesi(),
             ),
           )
         ],
