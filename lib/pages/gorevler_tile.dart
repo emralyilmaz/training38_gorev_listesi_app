@@ -4,8 +4,12 @@ class GorevTile extends StatelessWidget {
   final bool secim;
   final String gorevAd;
   final Function checkBoxCallback;
-
-  GorevTile({this.secim, this.gorevAd, this.checkBoxCallback});
+  final Function listTileLongPress;
+  GorevTile(
+      {this.secim,
+      this.gorevAd,
+      this.checkBoxCallback,
+      this.listTileLongPress});
 
   @override
   Widget build(BuildContext context) {
@@ -21,6 +25,7 @@ class GorevTile extends StatelessWidget {
         onChanged: checkBoxCallback,
         activeColor: Color.fromRGBO(77, 59, 59, 1),
       ),
+      onLongPress: listTileLongPress,
     );
   }
 }
