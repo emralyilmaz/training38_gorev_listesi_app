@@ -10,18 +10,16 @@ class GorevListesi extends StatelessWidget {
         return ListView.builder(
           itemBuilder: (context, index) {
             return GorevTile(
-              gorevAd:
-                  Provider.of<GorevVeri>(context).gorevListesi[index].gorevAd,
-              secim:
-                  Provider.of<GorevVeri>(context).gorevListesi[index].yapildi,
+              gorevAd: gorevVeri.gorevListesi[index].gorevAd,
+              secim: gorevVeri.gorevListesi[index].yapildi,
               checkBoxCallback: (bool val) {
                 // setState(() {
-                //   Provider.of<GorevVeri>(context).gorevListesi[index].toggleYapildi();
+                //  gorevVeri.gorevListesi[index].toggleYapildi();
                 // });
               },
             );
           },
-          itemCount: Provider.of<GorevVeri>(context).gorevSayisi,
+          itemCount: gorevVeri.gorevSayisi,
         );
       },
     );

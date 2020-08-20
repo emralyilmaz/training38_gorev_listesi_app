@@ -10,4 +10,13 @@ class GorevVeri with ChangeNotifier {
     Gorev(gorevAd: "Flutter Çalış"),
     Gorev(gorevAd: "Mehmet Yılmaz'a el salla"),
   ];
+
+  int get gorevSayisi {
+    return gorevListesi.length;
+  }
+
+  void gorevEkle(Gorev yeniGorev) {
+    gorevListesi.add(yeniGorev);
+    notifyListeners();
+  }
 }

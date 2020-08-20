@@ -25,15 +25,7 @@ class _GorevlerEkranState extends State<GorevlerEkran> {
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           showModalBottomSheet(
-              context: context,
-              builder: (context) => GorevEkle((yeniGorev) {
-                    // setState(() {
-                    //   // print(yeniGorev);
-                    //   gorevListesi.add(Gorev(
-                    //       gorevAd: yeniGorev)); // listeye yeni görev ekleme
-                    // });
-                    Navigator.pop(context);
-                  }));
+              context: context, builder: (context) => GorevEkle());
         },
         child: Icon(
           Icons.add,
@@ -68,7 +60,7 @@ class _GorevlerEkranState extends State<GorevlerEkran> {
                 ),
                 SizedBox(height: 10.0),
                 Text(
-                  "${Provider.of<GorevVeri>(context).gorevListesi.length} tane görev var",
+                  "${Provider.of<GorevVeri>(context).gorevSayisi} tane görev var",
                   style: TextStyle(
                       fontSize: 20, color: Color.fromRGBO(77, 59, 59, 1)),
                 ),
