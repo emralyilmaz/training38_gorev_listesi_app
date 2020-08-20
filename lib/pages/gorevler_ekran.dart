@@ -1,13 +1,26 @@
 import 'package:flutter/material.dart';
+import 'package:training38_gorev_listesi_app/pages/gorevler_add.dart';
 import 'package:training38_gorev_listesi_app/pages/gorevler_list.dart';
+import 'package:training38_gorev_listesi_app/pages/gorevler_add.dart';
 
 class GorevlerEkran extends StatelessWidget {
+  // Widget buildModalSheet(BuildContext context) {
+  //   return Container(
+  //     child: Center(
+  //       child: Text("Modal Sheet"),
+  //     ),
+  //   );
+  // }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Color.fromRGBO(245, 224, 211, 1),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: () {
+          showModalBottomSheet(
+              context: context, builder: (context) => GorevEkle());
+        },
         child: Icon(
           Icons.add,
           color: Color.fromRGBO(222, 98, 98, 1),
