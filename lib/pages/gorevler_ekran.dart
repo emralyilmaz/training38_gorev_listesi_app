@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:training38_gorev_listesi_app/pages/gorevler_add.dart';
 import 'package:training38_gorev_listesi_app/pages/gorevler_list.dart';
-import 'package:training38_gorev_listesi_app/pages/gorevler_add.dart';
+import 'package:training38_gorev_listesi_app/models/gorev.dart';
 
-class GorevlerEkran extends StatelessWidget {
+class GorevlerEkran extends StatefulWidget {
   // Widget buildModalSheet(BuildContext context) {
   //   return Container(
   //     child: Center(
@@ -13,13 +13,34 @@ class GorevlerEkran extends StatelessWidget {
   // }
 
   @override
+  _GorevlerEkranState createState() => _GorevlerEkranState();
+}
+
+class _GorevlerEkranState extends State<GorevlerEkran> {
+  List<Gorev> gorevListesi = [
+    Gorev(gorevAd: "Spora Git"),
+    Gorev(gorevAd: "Effortless English çalış"),
+    Gorev(gorevAd: "Mehmet Yılmaz'ı öp"),
+    Gorev(gorevAd: "Flutter Çalış"),
+    Gorev(gorevAd: "Mehmet Yılmaz'a el salla"),
+  ];
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Color.fromRGBO(245, 224, 211, 1),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           showModalBottomSheet(
-              context: context, builder: (context) => GorevEkle());
+              context: context,
+              builder: (context) => GorevEkle((yeniGorev) {
+                    setState(() {
+                      // print(yeniGorev);
+                      gorevListesi.add(Gorev(
+                          gorevAd: yeniGorev)); // listeye yeni görev ekleme
+                    });
+                    Navigator.pop(context);
+                  }));
         },
         child: Icon(
           Icons.add,
@@ -70,7 +91,9 @@ class GorevlerEkran extends StatelessWidget {
                   borderRadius: BorderRadius.only(
                       topLeft: Radius.circular(30),
                       topRight: Radius.circular(30))),
-              child: GorevListesi(),
+              child: GorevListesi(
+                gorevListesi: gorevListesi,
+              ),
             ),
           )
         ],

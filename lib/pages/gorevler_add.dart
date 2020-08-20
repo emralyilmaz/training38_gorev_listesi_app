@@ -1,6 +1,16 @@
 import 'package:flutter/material.dart';
 
-class GorevEkle extends StatelessWidget {
+class GorevEkle extends StatefulWidget {
+  final Function gorevEkle;
+  GorevEkle(this.gorevEkle);
+
+  @override
+  _GorevEkleState createState() => _GorevEkleState();
+}
+
+class _GorevEkleState extends State<GorevEkle> {
+  String yeniGorev;
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -25,13 +35,19 @@ class GorevEkle extends StatelessWidget {
             TextField(
               autofocus: true,
               textAlign: TextAlign.center,
+              onChanged: (val) {
+                yeniGorev = val;
+              },
             ),
             SizedBox(
               height: 40,
             ),
             FlatButton(
                 color: Color.fromRGBO(77, 59, 59, 1),
-                onPressed: () {},
+                onPressed: () {
+                  // print(yeniGorev);
+                  widget.gorevEkle(yeniGorev);
+                },
                 child: Text(
                   "Ekle",
                   style: TextStyle(
