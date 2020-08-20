@@ -19,4 +19,9 @@ class GorevVeri with ChangeNotifier {
     gorevListesi.add(yeniGorev);
     notifyListeners();
   }
+
+  void gorevGuncelle(Gorev g) {
+    g.toggleYapildi();
+    notifyListeners();
+  }
 }

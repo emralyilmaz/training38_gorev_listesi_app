@@ -13,9 +13,7 @@ class GorevListesi extends StatelessWidget {
               gorevAd: gorevVeri.gorevListesi[index].gorevAd,
               secim: gorevVeri.gorevListesi[index].yapildi,
               checkBoxCallback: (bool val) {
-                // setState(() {
-                //  gorevVeri.gorevListesi[index].toggleYapildi();
-                // });
+                gorevVeri.gorevGuncelle(gorevVeri.gorevListesi[index]);
               },
             );
           },
